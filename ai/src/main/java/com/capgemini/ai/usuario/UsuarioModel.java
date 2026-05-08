@@ -1,15 +1,15 @@
-package com.capgemini.ai.funcionario;
+package com.capgemini.ai.usuario;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "funcionario")
+@Table(name = "categoria")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FuncionarioModel {
+public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,12 +17,9 @@ public class FuncionarioModel {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
     @Column(nullable = false)
-    private String especialidade;
-
+    private String email;
+    
     @Column(nullable = false)
     private String senha;
 }
