@@ -3,6 +3,7 @@ package com.capgemini.ai.pedido;
 import java.util.List;
 
 import com.capgemini.ai.produto.ProdutoModel;
+import com.capgemini.ai.usuario.UsuarioModel;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,6 +23,6 @@ public class PedidoModel {
     @JoinColumn(name = "usuario_id", nullable = false)
     private UsuarioModel usuario;
     
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "id")
     private List<ProdutoModel> produtos;
 }
