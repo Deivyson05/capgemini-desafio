@@ -25,6 +25,9 @@ public class ProdutoModel {
     @Column(nullable = false)
     private int preco;
 
+    @Column(nullable = false)
+    private String imagemUrl;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private CategoriaModel categoria;
