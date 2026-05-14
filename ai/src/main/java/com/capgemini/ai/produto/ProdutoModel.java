@@ -20,7 +20,7 @@ public class ProdutoModel {
     private String nome;
 
     @Column(nullable = false)
-    private String descriscao;
+    private String descricao;
 
     @Column(nullable = false)
     private int preco;
