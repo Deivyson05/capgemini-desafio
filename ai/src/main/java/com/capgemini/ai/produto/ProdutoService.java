@@ -28,6 +28,8 @@ public class ProdutoService {
         produto.setNome(produtoModel.getNome());
         produto.setDescricao(produtoModel.getDescricao());
         produto.setPreco(produtoModel.getPreco());
+        produto.setImagemUrl(produtoModel.getImagemUrl());
+        produto.setCategoria(produtoModel.getCategoria());
         return this.produtoRepository.save(produto);
     }
 
