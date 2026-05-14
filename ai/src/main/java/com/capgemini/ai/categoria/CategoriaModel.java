@@ -1,5 +1,7 @@
 package com.capgemini.ai.categoria;
 
+import java.util.UUID;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,8 +13,8 @@ import lombok.*;
 @Builder
 public class CategoriaModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(nullable = false)
     private String nome;
