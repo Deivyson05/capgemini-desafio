@@ -20,14 +20,18 @@ public class GroqClient {
     private static final String GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
     private final ObjectMapper mapper = new ObjectMapper();
-    @Value("${groq.api-key}")
+    @Value("${groq.api-key:${GROQ_API_KEY:}}")
     private String apiKey;
 
-    public String complete(String systemPrompt, List<Map<String, String>> hystory) {
+    public String complete(String systemPrompt, List<Map<String, String>> history) {
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalStateException("A propriedade 'groq.api-key' não está configurada.");
+        }
+
         try {
             List<Map<String, String>> messages = new ArrayList<>();
             messages.add(Map.of("role", "system", "content", systemPrompt));
-            messages.addAll(hystory);
+            messages.addAll(history);
 
             Map<String, Object> body = Map.of(
                 "model", MODEL,
