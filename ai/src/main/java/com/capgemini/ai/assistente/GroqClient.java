@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class GroqClient {
-    private static final String MODEL = "groq-1.5-pro";
+    private static final String MODEL = "llama-3.3-70b-versatile";
     private static final String GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
     private final ObjectMapper mapper = new ObjectMapper();

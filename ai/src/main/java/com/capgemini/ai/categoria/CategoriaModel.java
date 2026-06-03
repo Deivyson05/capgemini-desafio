@@ -20,5 +20,5 @@ public class CategoriaModel {
     private String nome;
 
     @Column(nullable = false)
-    private String descriscao;
+    private String descricao;
 }

@@ -26,4 +26,8 @@ public class UsuarioService {
         usuarioModel.setSenha(hash);
         return this.usuarioRepository.save(usuarioModel);
     }
+
+    public UsuarioModel findByEmail(String email) {
+        return this.usuarioRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Usuário nao encontrado"));
+    }
 }

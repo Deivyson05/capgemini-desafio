@@ -1,5 +1,7 @@
 package com.capgemini.ai.produto;
 
+import java.util.UUID;
+
 import com.capgemini.ai.categoria.CategoriaModel;
 
 import jakarta.persistence.*;
@@ -13,8 +15,8 @@ import lombok.*;
 @Builder
 public class ProdutoModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(nullable = false)
     private String nome;
@@ -23,7 +25,7 @@ public class ProdutoModel {
     private String descricao;
 
     @Column(nullable = false)
-    private int preco;
+    private Integer preco;
 
     @Column(nullable = false)
     private String imagemUrl;

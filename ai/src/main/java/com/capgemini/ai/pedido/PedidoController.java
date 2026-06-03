@@ -1,54 +1,58 @@
 package com.capgemini.ai.pedido;
 
 import java.util.List;
+import java.util.UUID;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
-@Controller
+@RestController
 @RequestMapping("/pedidos")
 @RequiredArgsConstructor
 public class PedidoController {
     private final PedidoService pedidoService;
 
-    @GetMapping("/")
-    public List<PedidoModel> listAll() {
+    @GetMapping("")
+    public ResponseEntity<List<PedidoModel>> listAll() {
         var pedidos = this.pedidoService.listAll();
-        return pedidos;
+        return ResponseEntity.ok().body(pedidos);
     }
 
     @GetMapping("/usuario/{usuarioId}")
-    public List<PedidoModel> findByUsuarioId(String usuarioId) {
+    public ResponseEntity<List<PedidoModel>> findByUsuarioId(@PathVariable UUID usuarioId) {
         var pedidos = this.pedidoService.findByUsuarioId(usuarioId);
-        return pedidos;
+        return ResponseEntity.ok().body(pedidos);
     }
 
     @GetMapping("/{id}")
-    public PedidoModel findById(String id) {
+    public ResponseEntity<PedidoModel> findById(@PathVariable UUID id) {
         var pedido = this.pedidoService.findById(id);
-        return pedido;
+        return ResponseEntity.ok().body(pedido);
     }
 
-    @PostMapping("/")
-    public PedidoModel create(PedidoModel pedidoModel) {
+    @PostMapping("")
+    public ResponseEntity<PedidoModel> create(@RequestBody PedidoModel pedidoModel) {
         var pedido = this.pedidoService.create(pedidoModel);
-        return pedido;
+        return ResponseEntity.ok().body(pedido);
     }
 
     @PutMapping("/{id}")
-    public PedidoModel updateById(String id, PedidoModel pedidoModel) {
+    public ResponseEntity<PedidoModel> updateById(UUID id, @RequestBody PedidoModel pedidoModel) {
         var pedido = this.pedidoService.updateById(id, pedidoModel);
-        return pedido;
+        return ResponseEntity.ok().body(pedido);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(String id) {
+    public void deleteById(UUID id) {
         this.pedidoService.deleteById(id);
     }
 

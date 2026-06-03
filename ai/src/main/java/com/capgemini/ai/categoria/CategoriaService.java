@@ -31,7 +31,7 @@ public class CategoriaService {
     public CategoriaModel updateById(String id, CategoriaModel categoriaModel) {
         var categoria = this.categoriaRepository.findById(UUID.fromString(id)).orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
         categoria.setNome(categoriaModel.getNome());
-        categoria.setDescriscao(categoriaModel.getDescriscao());
+        categoria.setDescricao(categoriaModel.getDescricao());
         return this.categoriaRepository.save(categoria);
     }
 }
