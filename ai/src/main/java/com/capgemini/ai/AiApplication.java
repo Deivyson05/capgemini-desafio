@@ -9,7 +9,9 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class AiApplication {
 
 	public static void main(String[] args) {
-		Dotenv dotenv = Dotenv.load();
+		Dotenv dotenv = Dotenv.configure()
+			.ignoreIfMissing() // ← não quebra se não tiver o arquivo
+			.load();
 		System.setProperty("GROQ_API_KEY", dotenv.get("GROQ_API_KEY"));
 		System.setProperty("DATABASE_URL", dotenv.get("DATABASE_URL"));
 		System.setProperty("DATABASE_USERNAME", dotenv.get("DATABASE_USERNAME"));
